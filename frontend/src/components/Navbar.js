@@ -34,36 +34,7 @@ const NavbarLink = (props) => {
                             <Link to="/displayPatients" className="nav-link"> {props.displayPatients}</Link>
                             <Link to="/logout" className="nav-link"> {props.logout} </Link>
                         </>
-                    }
-                    <NavDropdown title="Features" id="basic-nav-dropdown">
-                        <NavDropdown.Item>
-                            <Link to="/todolist" className="nav-link">To-Do List</Link>
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                            <Link to="/calculator" className="nav-link">Calculator</Link>
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                            <Link to="/contact-us" className="nav-link">Contact Us</Link>
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                            <Link to="/reducerDemo" className="nav-link">Reducer</Link>
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                            <Link to="/reduxDemo" className="nav-link">Redux</Link>
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                            <Link to="/storeMngt" className="nav-link">Redux-Store Management</Link>
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                            <Link to="/stateMngt" className="nav-link">State Management</Link>
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                            <Link to="/reusableComponent" className="nav-link">Reusable Component</Link>
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                            <Link to="/reactTable" className="nav-link">React Table</Link>
-                        </NavDropdown.Item>
-                    </NavDropdown>
+                    }-
                 </Nav>
                 <div style={{
                     display: "flex",
