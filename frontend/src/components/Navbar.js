@@ -70,8 +70,8 @@ const NavbarLink = (props) => {
 NavbarLink.defaultProps = {
     title: "Doctor",
     home: "Home",
-    addPatient: "AddPatient",
-    displayPatients: "DisplayPatients",
+    addPatient: "AddFriend",
+    displayPatients: "FriendList",
     form: "Form",
     login: "Login",
     signup: "Signup",

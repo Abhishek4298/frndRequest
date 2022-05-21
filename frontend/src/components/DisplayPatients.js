@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { BACKEND_URI } from "../config/constants";
+import NoImage from "../Assets/Image/no-image-icon.png";
+require('./friendListStyle.css')
 
 const DisplayPatients = (props) => {
     document.title = "Clinic - DisplayPatient"
@@ -34,60 +35,41 @@ const DisplayPatients = (props) => {
     return (
         <>
             <div className="mx-5 my-5" style={{ color: props.theme === "dark" ? "white" : "black" }}>
-                <h2 className="mx-5 my-5">Manage Patients</h2>
-                <table className="table table-bordered mx-5 my-5">
-                    <thead>
-                        <tr>
-                            <th>Index</th>
-                            <th>Name</th>
-                            <th>Age</th>
-                            <th>Email</th>
-                            <th>Operation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {patient.filter(ele => props.search ? (
-                            ele.name?.toLowerCase()?.includes(props.search?.toLowerCase()) ||
-                            ele.age?.toString()?.includes(props.search?.toLowerCase()) ||
-                            ele.email?.toLowerCase()?.includes(props.search?.toLowerCase())
-                        ) : true)
-                            .map((ele, index) => (
-                                <tr key={ele._id}>
-                                    <td>{index + 1}</td>
-                                    <td>{ele.name}</td>
-                                    <td>{ele.age}</td>
-                                    <td>{ele.email}</td>
-                                    <div
-                                        style={{
-                                            textDecoration: "none",
-                                            display: "flex",
-                                            justifyContent: "flex-start",
-                                            alignItems: "center",
-                                        }}
-                                    >
-                                        <Link className="nav-link" to={`/patient/${ele._id}`}>
-                                            <i className="fa fa-pencil-square-o"
-                                                aria-hidden="true"></i>
-                                        </Link>
-                                        <i
-                                            onClick={() => patientDeleteHandler(ele._id)}
-                                            className="fa fa-trash-o"
-                                            aria-hidden="true"
-                                        ></i>
+                <h2 className="mx-5 my-5">Your Friends</h2>
+                <div className='m-5 row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5'>
+                    {patient.filter(ele => props.search ? (
+                        ele.name?.toLowerCase()?.includes(props.search?.toLowerCase()) ||
+                        ele.age?.toString()?.includes(props.search?.toLowerCase()) ||
+                        ele.email?.toLowerCase()?.includes(props.search?.toLowerCase())
+                    ) : true)
+                        .map((ele, index) => {
+                            return (
+                                <div key={index} className='col mb-4'>
+                                    <div className='card'>
+                                        <img
+                                            height='150'
+                                            src="../Assets/Image/finderLogo.svg"
+                                            onError={(e) => {
+                                                e.target.src = NoImage
+                                            }}
+                                            className='content-img card-img-top'
+                                            alt='content from Pixabay.'
+                                        />
+                                        <div className='card-body '>
+                                            <h5 className='card-title text-truncate'>
+                                                {ele.name}
+                                            </h5>
+                                            <p className='card-text'>by {ele.Email}</p>
+                                            <div>
+                                                <button class="w-100 btn btn-primary pull-right"> <i className="mx-3 fa-solid fa-user-plus"></i>Unfollow</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                </tr>
-                            ))}
-                    </tbody>
-                </table>
-                <nav>
-                    <ul className="d-flex justify-content-end pagination">
-                        <li className="page-item"><a className="page-link" href="">Previous</a></li>
-                        <li className="page-item"><a className="page-link" href="">1</a></li>
-                        <li className="page-item"><a className="page-link" href="">2</a></li>
-                        <li className="page-item"><a className="page-link" href="">3</a></li>
-                        <li className="page-item"><a className="page-link" href="">Next</a></li>
-                    </ul>
-                </nav>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
         </>
     );
